@@ -1,20 +1,12 @@
 <template>
   <nav>
     <div class="nav-wrapper teal">
-      <transition name="fade" mode="out-in">
-        <i
-          class="material-icons menu hide-on-large-only"
-          v-if="!show"
-          @click="$emit('click')"
-          key="menu"
-        >menu</i>
-        <i
-          class="material-icons clear hide-on-large-only"
-          v-else
-          @click="$emit('click')"
-          key="clear"
-        >clear</i>
-      </transition>
+      <div class="hide-on-large-only">
+        <div class="nav-icon" @click="$emit('click', show = !show )" :class="{open:show}">
+          <div></div>
+        </div>
+      </div>
+
       <div class="pl-5 navbar-left">
         <ul class="black-text hide-on-med-and-down">
           <router-link
@@ -59,14 +51,14 @@
 <script>
 export default {
   data: () => ({
+    show: false,
     links: [
       { title: 'Счет', url: '/', exact: true },
       { title: 'История', url: '/history' },
       { title: 'Планирование', url: '/planning' },
       { title: 'Новая запись', url: '/record' },
       { title: 'Категории', url: '/categories' }
-    ],
-    show: false
+    ]
   })
 }
 </script>

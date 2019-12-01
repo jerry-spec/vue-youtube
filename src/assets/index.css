@@ -12,14 +12,33 @@
   height: 100vh;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+.nav-icon {
+  margin: 1em;
+  width: 40px;
 }
 
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.nav-icon:after,
+.nav-icon:before,
+.nav-icon div {
+  background-color: #333;
+  border-radius: 3px;
+  content: "";
+  display: block;
+  height: 5px;
+  margin: 7px 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-icon.open:before {
+  transform: translateY(12px) rotate(135deg);
+}
+
+.nav-icon.open:after {
+  transform: translateY(-12px) rotate(-135deg);
+}
+
+.nav-icon.open div {
+  transform: scale(0);
 }
 
 .auth-card {
@@ -69,6 +88,10 @@
   z-index: 1000;
 }
 
+nav {
+  height: 64px;
+}
+
 .nav-wrapper {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -85,7 +108,7 @@
   align-items: center;
 }
 
-.navbar-left > a {
+.navbar-left>a {
   margin-right: 1rem;
 }
 
