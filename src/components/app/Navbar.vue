@@ -1,14 +1,13 @@
 <template>
-  <nav>
-    <div class="nav-wrapper teal">
+  <nav class="navbar teal">
+    <div class="nav-wrapper">
+      <div class="navbar-left">
       <div class="hide-on-large-only">
         <div class="nav-icon" @click="$emit('click', show = !show )" :class="{open:show}">
           <div></div>
         </div>
       </div>
-
-      <div class="pl-5 navbar-left">
-        <ul class="black-text hide-on-med-and-down">
+        <ul class="hide-on-med-and-down">
           <router-link
             v-for="link in links"
             :key="link.url"
@@ -17,14 +16,14 @@
             :to="link.url"
             :exact="link.exact"
           >
-            <a href="#" class="waves-effect waves-teal pointer">{{link.title}}</a>
+            <a href="#" class="waves-effect waves-teal pointer black-text">{{link.title}}</a>
           </router-link>
         </ul>
       </div>
 
       <ul class="right">
         <li>
-          <a class="dropdown-trigger black-text" href="#" data-target="dropdown">
+          <a class="dropdown-trigger black-text" href="#" data-target="dropdown" ref="dropdown">
             USER NAME
             <i class="material-icons right">arrow_drop_down</i>
           </a>
@@ -50,6 +49,11 @@
 
 <script>
 export default {
+  mounted () {
+    window.M.Dropdown.init(this.$refs.dropdown, {
+      coverTrigger: false
+    })
+  },
   data: () => ({
     show: false,
     links: [
