@@ -2,11 +2,11 @@
   <nav class="navbar teal">
     <div class="nav-wrapper">
       <div class="navbar-left">
-      <div class="hide-on-large-only">
-        <div class="nav-icon" @click="$emit('click', show = !show )" :class="{open:show}">
-          <div></div>
+        <div class="hide-on-large-only">
+          <div class="nav-icon" @click="$emit('click', show = !show )" :class="{open:show}">
+            <div></div>
+          </div>
         </div>
-      </div>
         <ul class="hide-on-med-and-down">
           <router-link
             v-for="link in links"
